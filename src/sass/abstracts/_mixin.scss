@@ -1,0 +1,52 @@
+@mixin reset-style() {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+@mixin header-footer-container_fullwidth() {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+@mixin text-style() {
+    font: {
+        size: 12px;
+        weight: 300;
+    }
+}
+
+@mixin weight-size_text($weight, $size) {
+    font-weight: $weight;
+    font-size: $size;
+}
+
+@mixin text-style-h-tags() {
+    @each $hTag,
+    $size in $hTagsStyle {
+        #{$hTag} {
+            @include reset-style;
+            margin: 0;
+            padding: 0;
+            @include weight-size_text(300, $size);
+        }
+    }
+}
+
+@mixin menu($float, $paddingTop) {
+    float: $float;
+    padding-top: $paddingTop;
+}
+
+@mixin clearfix() {
+    &::after {
+        display: block;
+        clear: both;
+        content: "";
+    }
+}
